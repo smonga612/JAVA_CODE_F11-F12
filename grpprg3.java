@@ -1,6 +1,6 @@
 import java.awt.*;
 import java.awt.event.*;
-class myframe extends Frame implements ActionListener
+class myframe extends Frame 
 {
 Label l1,l2,l3;
 TextField tf1,tf2;
@@ -12,22 +12,6 @@ setSize(800,600);
 setVisible(true);
 setLayout(null);
 designForm();
-}
-public void actionPerformed(ActionEvent ae)
-{
-
-int a,b,c;
-a=Integer.parseInt(tf1.getText());
-b=Integer.parseInt(tf2.getText());
-if(ae.getActionCommand()=="Add")
-c=a+b;
-else
-c=a-b;
-
-l3.setText("Result is "+c);
-//System.out.println("Addition is "+c);
-//System.out.println(ae.getActionCommand());
-
 }
 
 void designForm()
@@ -51,8 +35,32 @@ l3.setBounds(300,400,150,30);
 b2.setBounds(450,350,150,30);
 
 
-b1.addActionListener(this);
-b2.addActionListener(this);
+b1.addActionListener(new ActionListener()
+{
+public void actionPerformed(ActionEvent ae)
+{
+int a,b,c;
+a=Integer.parseInt(tf1.getText());
+b=Integer.parseInt(tf2.getText());
+c=a+b;
+l3.setText("Result is "+c);
+}
+}
+);
+
+b2.addActionListener(new ActionListener()
+{
+public void actionPerformed(ActionEvent ae)
+{
+int a,b,c;
+a=Integer.parseInt(tf1.getText());
+b=Integer.parseInt(tf2.getText());
+c=a-b;
+l3.setText("Result is "+c);
+}
+}
+);
+
 add(l1);
 add(l2);
 add(tf1);
